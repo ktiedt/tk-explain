@@ -2,6 +2,31 @@
 <link rel="import" href="../paper-styles/color.html">
 <link rel="import" href="../paper-tooltip/paper-tooltip.html">
 
+<!--
+`tk-explain` is a simple text component that highlights the text within it and adds a tooltip
+to it so that users can mouseover the word to see why its highlighted.
+
+Example:
+
+    <tk-explain>No tooltip here</tk-explain>
+    <tk-explain label="Laughing out loud">LOL</tk-explain>
+
+
+### Styling
+The following custom properties and mixins are available for styling:
+Custom property | Description | Default
+----------------|-------------|----------
+`--tk-explain-line` | text-decoration line type  | `underline`
+`--tk-explain-style` | text-decoration line style | `dashed`
+`--tk-explain-color` | text-decoration lin color | `--paper-light-blue-a400`
+`--tk-explain` | Mixin applied to host | `{}`
+`--tk-explain-tooltip-margin-top` | Number of pixels to adjust the position of the tooltip | `15px`
+
+@customElement
+@polymer
+@demo demo/index.html
+-->
+
 <dom-module id="tk-explain">
 	<template>
 		<style>
@@ -30,28 +55,6 @@
 	</template>
 
 	<script>
-		/**
-		 * `tk-explain` is a simple text component that highlights the text within it and adds a tooltip
-		 *  to it so that users can mouseover the word to see why its highlighted.
-		 *
-		 * Example:
-		 *   <tk-explain label="Laughing out loud">LOL</tk-explain>
-		 *
-		 *
-		 * ### Styling
-		 * The following custom properties and mixins are available for styling:
-		 * Custom property | Description | Default
-		 * ----------------|-------------|----------
-		 * `--tk-explain-line` | text-decoration line type  | `underline`
-		 * `--tk-explain-style` | text-decoration line style | `dashed`
-		 * `--tk-explain-color` | text-decoration lin color | `--paper-light-blue-a400`
-		 * `--tk-explain` | Mixin applied to host | `{}`
-		 * `--tk-explain-tooltip-margin-top` | Number of pixels to adjust the position of the tooltip | `15px`
-		 *
-		 * @customElement
-		 * @polymer
-		 * @demo demo/index.html
-		 */
 		class TkExplain extends Polymer.Element {
 			static get is() { return 'tk-explain'; }
 			static get properties() {
