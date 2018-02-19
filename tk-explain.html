@@ -1,0 +1,66 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/paper-styles/color.html">
+<link rel="import" href="../bower_components/paper-tooltip/paper-tooltip.html">
+
+<dom-module id="tk-explain">
+	<template>
+		<style>
+			:host {
+				--tk-explain-line: underline;
+				--tk-explain-style: dashed;
+				--tk-explain-color: var(--paper-light-blue-a400);
+				--tk-explain-tooltip-margin-top: 15px;
+
+				display: inline-block;
+				text-decoration-line: var(--tk-explain-line);
+				text-decoration-style: var(--tk-explain-style);
+				text-decoration-color: var(--tk-explain-color);
+
+				@apply --tk-explain;
+			}
+
+			paper-tooltip[position=top] {
+				margin-top: var(--tk-explain-tooltip-margin-top);
+			}
+		</style>
+		<paper-tooltip position="top">
+			[[label]]
+		</paper-tooltip>
+		<slot></slot>
+	</template>
+
+	<script>
+		/**
+		 * `tk-explain` is a simple text component that highlights the text within it and adds a tooltip
+		 *  to it so that users can mouseover the word to see why its highlighted.
+		 *
+		 * Example:
+		 *   <tk-explain label="Laughing out loud">LOL</tk-explain>
+		 *
+		 *
+		 * ### Styling
+		 * The following custom properties and mixins are available for styling:
+		 * Custom property | Description | Default
+		 * ----------------|-------------|----------
+		 * `--tk-explain-line` | text-decoration line type  | `underline`
+		 * `--tk-explain-style` | text-decoration line style | `dashed`
+		 * `--tk-explain-color` | text-decoration lin color | `--paper-light-blue-a400`
+		 * `--tk-explain` | Mixin applied to host | `{}`
+		 * `--tk-explain-tooltip-margin-top` | Number of pixels to adjust the position of the tooltip | `15px`
+		 *
+		 * @customElement
+		 * @polymer
+		 * @demo demo/index.html
+		 */
+		class TkExplain extends Polymer.Element {
+			static get is() { return 'tk-explain'; }
+			static get properties() {
+				return {
+					label: String,
+				};
+			}
+		}
+
+		window.customElements.define(TkExplain.is, TkExplain);
+	</script>
+</dom-module>

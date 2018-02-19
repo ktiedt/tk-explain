@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+		<title>tk-explain demo</title>
+
+		<script src="../../webcomponentsjs/webcomponents-loader.js"></script>
+
+		<link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+		<link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+		<link rel="import" href="../tk-explain.html">
+
+		<custom-style>
+			<style is="custom-style" include="demo-pages-shared-styles">
+				tk-explain.red-bg {
+					--paper-tooltip-background: var(--paper-red-100);
+				}
+			</style>
+		</custom-style>
+	</head>
+	<body>
+		<div class="vertical-section-container centered">
+			<h3>Basic tk-explain demo</h3>
+			<demo-snippet>
+				<template>
+					<tk-explain label="showing luminous colors that seem to change when seen from different angles">iridescent</tk-explain>
+				</template>
+			</demo-snippet>
+			<h3>Advanced tk-explain demo</h3>
+			<demo-snippet>
+				<template>
+					<tk-explain class="red-bg" label="Look a red background">a red tooltip</tk-explain>
+				</template>
+			</demo-snippet>
+		</div>
+	</body>
+</html>
