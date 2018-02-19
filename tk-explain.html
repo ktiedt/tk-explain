@@ -59,11 +59,19 @@ Custom property | Description | Default
 			static get is() { return 'tk-explain'; }
 			static get properties() {
 				return {
+					/**
+					 * Is this element effectively disabled. Ie. No tooltip or CSS decorations are used.
+					 * @type {boolean}
+					 */
 					disabled: {
 						type: Boolean,
 						computed: '_computeDisabled(label)',
 						reflectToAttribute: true
 					},
+					/**
+					 * The label to be displayed above this element on mouseover.
+					 * @type {string}
+					 */
 					label: {
 						type: String,
 						value: ''
@@ -71,6 +79,11 @@ Custom property | Description | Default
 				};
 			}
 
+			/**
+			 * Compute the disabled attribute based on the value of the label property.
+			 * @param {string} label The string to set the label to.
+			 * @return {boolean} Whether this element is disabled or not.
+			 */
 			_computeDisabled(value) {
 				return value.length == 0;
 			}
