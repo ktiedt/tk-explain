@@ -1,11 +1,11 @@
-<link rel="import" href="../bower_components/polymer/polymer-element.html">
-<link rel="import" href="../bower_components/paper-styles/color.html">
-<link rel="import" href="../bower_components/paper-tooltip/paper-tooltip.html">
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../paper-styles/color.html">
+<link rel="import" href="../paper-tooltip/paper-tooltip.html">
 
 <dom-module id="tk-explain">
 	<template>
 		<style>
-			:host {
+			:host(:not([disabled])) {
 				--tk-explain-line: underline;
 				--tk-explain-style: dashed;
 				--tk-explain-color: var(--paper-light-blue-a400);
@@ -56,8 +56,20 @@
 			static get is() { return 'tk-explain'; }
 			static get properties() {
 				return {
-					label: String,
+					disabled: {
+						type: Boolean,
+						computed: '_computeDisabled(label)',
+						reflectToAttribute: true
+					},
+					label: {
+						type: String,
+						value: ''
+					}
 				};
+			}
+
+			_computeDisabled(value) {
+				return value.length == 0;
 			}
 		}
 

@@ -1,52 +1,58 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
-    <title>tk-explain test</title>
+		<title>tk-explain test</title>
 
-    <script src="../../webcomponentsjs/webcomponents-loader.js"></script>
-    <script src="../../web-component-tester/browser.js"></script>
+		<script src="../../webcomponentsjs/webcomponents-loader.js"></script>
+		<script src="../../web-component-tester/browser.js"></script>
 
-    <link rel="import" href="../tk-explain.html">
-  </head>
-  <body>
+		<link rel="import" href="../tk-explain.html">
+	</head>
+	<body>
 
-    <test-fixture id="BasicTestFixture">
-      <template>
-        <tk-explain></tk-explain>
-      </template>
-    </test-fixture>
+		<test-fixture id="BasicTestFixture">
+			<template>
+				<tk-explain>no label</tk-explain>
+			</template>
+		</test-fixture>
 
-    <test-fixture id="ChangedPropertyTestFixture">
-      <template>
-        <tk-explain prop1="new-prop1"></tk-explain>
-      </template>
-    </test-fixture>
+		<test-fixture id="ChangedPropertyTestFixture">
+			<template>
+				<tk-explain label="A test">whatever</tk-explain>
+			</template>
+		</test-fixture>
 
-    <script>
-      suite('tk-explain', () => {
+		<script>
+			suite('tk-explain', () => {
 
-        test('instantiating the element with default properties works', () => {
-          const element = fixture('BasicTestFixture');
-          assert.equal(element.prop1, 'tk-explain');
-          const elementShadowRoot = element.shadowRoot;
-          const elementHeader = elementShadowRoot.querySelector('h2');
-          assert.equal(elementHeader.innerHTML, 'Hello tk-explain!');
-        });
+				test('instantiating the element with default properties works', () => {
+					const element = fixture('BasicTestFixture');
+					assert.equal('', element.label, 'label is blank');
+					assert.equal(true, element.disabled, 'element is disabled');
+					const elementShadowRoot = element.shadowRoot;
+					const elementSlot = elementShadowRoot.querySelector('slot');
+					const lightNodes = elementSlot.assignedNodes();
+					assert.equal(lightNodes.length, 1, 'lightNodes.length == 1')
+					assert.equal(lightNodes[0].textContent, 'no label', 'content is "no label"');
+				});
 
-        test('setting a property on the element works', () => {
-          // Create a test fixture
-          const element = fixture('ChangedPropertyTestFixture');
-          assert.equal(element.prop1, 'new-prop1');
-          const elementShadowRoot = element.shadowRoot;
-          const elementHeader = elementShadowRoot.querySelector('h2');
-          assert.equal(elementHeader.innerHTML, 'Hello new-prop1!');
-        });
+				test('setting a label on the element works', () => {
+					// Create a test fixture
+					const element = fixture('ChangedPropertyTestFixture');
+					assert.equal(element.label, 'A test', 'label is "A test"');
+					assert.equal(element.disabled, false, 'disabled is false');
+					const elementShadowRoot = element.shadowRoot;
+					const elementSlot = elementShadowRoot.querySelector('slot');
+					const lightNodes = elementSlot.assignedNodes();
+					assert.equal(lightNodes.length, 1, 'lightNodes.length == 1')
+					assert.equal(lightNodes[0].textContent, 'whatever', 'content is "whatever"');
+				});
 
-      });
-    </script>
+			});
+		</script>
 
-  </body>
+	</body>
 </html>
