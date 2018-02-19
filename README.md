@@ -1,21 +1,19 @@
 # \<tk-explain\>
+[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/ktiedt/tk-explain)
 
 Highlight text and add a tooltip to it so that users can mouseover the word to see why its highlighted.
 
-## Install the Polymer-CLI
-
-First, make sure you have the [Polymer CLI](https://www.npmjs.com/package/polymer-cli) installed. Then run `polymer serve` to serve your element locally.
-
-## Viewing Your Element
-
+# Example
+<!--
 ```
-$ polymer serve
+<custom-element-demo>
+  <template>
+    <link rel="import" href="tk-explain.html">
+    <tk-explain label="showing luminous colors that seem to change when seen from different angles">iridescent</tk-explain>
+  </template>
+</custom-element-demo>
 ```
-
-## Running Tests
-
+-->
+```html
+<tk-explain label="showing luminous colors that seem to change when seen from different angles">iridescent</tk-explain>
 ```
-$ polymer test
-```
-
-Your application is already set up to be tested via [web-component-tester](https://github.com/Polymer/web-component-tester). Run `polymer test` to run your application's test suite locally.
